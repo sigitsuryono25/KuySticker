@@ -6,18 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.gabrielbb.cutout.CutOut
-import com.surelabsid.kuysticker.model.UploadModel
-import com.surelabsid.kuysticker.network.Network
-import com.surelabsid.kuysticker.utils.ImageHelper
 import com.vlk.multimager.activities.GalleryActivity
 import com.vlk.multimager.utils.Constants
 import com.vlk.multimager.utils.Image
 import com.vlk.multimager.utils.Params
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.Response
-import okhttp3.ResponseBody
-import retrofit2.Call
-import java.io.File
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {

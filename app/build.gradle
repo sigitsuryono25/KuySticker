@@ -75,4 +75,7 @@ dependencies {
     implementation 'com.facebook.fresco:webpsupport:1.10.0'
     implementation 'com.facebook.fresco:animated-base:1.13.0'
 
+
+    implementation project(':waapi')
+
 }

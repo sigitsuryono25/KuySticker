@@ -1,2 +1,3 @@
+include ':waapi'
 include ':app'
 rootProject.name = "Kuy Sticker"

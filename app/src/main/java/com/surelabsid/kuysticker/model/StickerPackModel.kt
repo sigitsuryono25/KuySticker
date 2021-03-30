@@ -7,7 +7,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class StickerPackModel(
     var id : Long? = null,
-    var packName : String? = null,
+    var name : String? = null,
     var author: String? = null,
-    var stickerList: List<String?>? = null
+    var stickerList: List<HashMap<String?, String?>?>? = null,
+    var trayImageFileName : String? = null,
+    var trayImageFile: String? = null
+
 ): Parcelable
