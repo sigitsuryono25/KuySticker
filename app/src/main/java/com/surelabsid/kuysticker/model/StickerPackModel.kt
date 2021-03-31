@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class StickerPackModel(
-    var id : Long? = null,
+    var identifier : String? = null,
     var name : String? = null,
     var author: String? = null,
     var stickerList: List<HashMap<String?, String?>?>? = null,

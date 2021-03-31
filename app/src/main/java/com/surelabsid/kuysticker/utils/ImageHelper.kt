@@ -11,7 +11,9 @@ import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.surelabsid.kuysticker.model.StickerPacksItem
 import com.surelabsid.stickerkuy.utils.HourToMillis
+import com.surelabsid.whatsappapi.utils.ImageUtils
 import java.io.*
 
 object ImageHelper {
@@ -44,7 +46,6 @@ object ImageHelper {
     }
 
     fun base64ImageTest(filePath: String?, bitmap: Bitmap?, quality: Int): String? {
-        Log.d("path", filePath.toString())
         if (filePath?.isNotEmpty() == true) {
             val imageFile = File(filePath)
             var fis: FileInputStream? = null
@@ -56,9 +57,9 @@ object ImageHelper {
 
             val bm = BitmapFactory.decodeStream(fis)
             val baos = ByteArrayOutputStream()
+            ImageUtils.overlayBitmapToCenter(Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888), bm)
             bm.compress(Bitmap.CompressFormat.WEBP, quality, baos)
             val b = baos.toByteArray()
-            print(Base64.encodeToString(b, Base64.DEFAULT))
             return Base64.encodeToString(b, Base64.DEFAULT)
         } else {
             if (bitmap != null) {
@@ -90,23 +91,20 @@ object ImageHelper {
         return null
     }
 
-    fun saveFile(context: Context, sourceuri: Uri, quality: Int) {
+    fun saveFile(context: Context, sourceuri: Uri, quality: Int, path: String) {
         val sourceFilename: String = sourceuri.path.toString()
         val bmp = BitmapFactory.decodeFile(sourceFilename)
-        this.saveImageAsFile(context, bmp, quality)
+        this.saveImageAsFile(context, bmp, quality, path, HourToMillis.millis().toString())
     }
 
-    private fun saveImageAsFile(
+    fun saveImageAsFile(
         context: Context,
         bmp: Bitmap,
         quality: Int = 70,
+        path: String, imageFileName: String
     ): String? {
         var savedImagePath: String? = null
-        val imageFileName = "${HourToMillis.millis()}.webp"
-        val pathDir = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                .toString() + "/sticker/"
-        )
+        val pathDir = File(path)
         var success = true
         if (!pathDir.exists()) {
             success = pathDir.mkdirs()

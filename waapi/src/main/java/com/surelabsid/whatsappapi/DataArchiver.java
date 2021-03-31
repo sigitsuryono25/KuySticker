@@ -1,10 +1,8 @@
 package com.surelabsid.whatsappapi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.GsonBuilder;
@@ -39,8 +37,7 @@ import java.util.zip.ZipOutputStream;
 public class DataArchiver {
     private static int BUFFER = 8192;
 
-    public static boolean writeStickerBookJSON(List<StickerPack> sb, Context context)
-    {
+    public static boolean writeStickerBookJSON(List<StickerPack> sb, Context context) {
         try {
             SharedPreferences mSettings = context.getSharedPreferences("StickerMaker", Context.MODE_PRIVATE);
 
@@ -49,24 +46,23 @@ public class DataArchiver {
                     .create()
                     .toJson(
                             sb,
-                            new TypeToken<ArrayList<StickerPack>>() {}.getType());
+                            new TypeToken<ArrayList<StickerPack>>() {
+                            }.getType());
             SharedPreferences.Editor mEditor = mSettings.edit();
             mEditor.putString("stickerbook", writeValue);
             mEditor.apply();
             return true;
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public static ArrayList<StickerPack> readStickerPackJSON(Context context)
-    {
+    public static ArrayList<StickerPack> readStickerPackJSON(Context context) {
         SharedPreferences mSettings = context.getSharedPreferences("StickerMaker", Context.MODE_PRIVATE);
 
         String loadValue = mSettings.getString("stickerbook", "");
-        Type listType = new TypeToken<ArrayList<StickerPack>>(){}.getType();
+        Type listType = new TypeToken<ArrayList<StickerPack>>() {
+        }.getType();
         return new GsonBuilder()
                 .registerTypeAdapter(Uri.class, new UriDeserializer())
                 .create()
@@ -151,11 +147,10 @@ public class DataArchiver {
                             sp,
                             StickerPack.class);
 
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(new File(path, sp.identifier+".json")));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(new File(path, sp.identifier + ".json")));
             outputStreamWriter.write(writeValue);
             outputStreamWriter.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
@@ -166,24 +161,23 @@ public class DataArchiver {
 
         try {
 
-            InputStream inputStream = new FileInputStream(new File(path, id+".json"));
+            InputStream inputStream = new FileInputStream(new File(path, id + ".json"));
 
 
-            if ( inputStream != null ) {
+            if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
 
-                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                while ((receiveString = bufferedReader.readLine()) != null) {
                     stringBuilder.append(receiveString);
                 }
 
                 inputStream.close();
                 ret = stringBuilder.toString();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
