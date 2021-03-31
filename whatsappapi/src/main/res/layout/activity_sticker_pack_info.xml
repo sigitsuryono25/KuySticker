@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/infoPageBackgroundColor"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tray_icon"
+            android:textColor="#B9B9B9"
+            tools:drawableLeft="@drawable/sticker_3rdparty_web"
+            tools:drawableStart="@drawable/sticker_3rdparty_web"
+            android:clickable="false"
+            android:text="@string/info_screen_tray_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_webpage"
+            android:drawableLeft="@drawable/sticker_3rdparty_web"
+            android:drawableStart="@drawable/sticker_3rdparty_web"
+            android:text="@string/view_webpage" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_email"
+            android:drawableLeft="@drawable/sticker_3rdparty_email"
+            android:drawableStart="@drawable/sticker_3rdparty_email"
+            android:text="@string/send_email" />
+
+        <TextView
+            android:id="@+id/privacy_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sticker_3rdparty_privacy"
+            android:drawableStart="@drawable/sticker_3rdparty_privacy"
+            android:text="@string/privacy_policy" />
+    </LinearLayout>
+</LinearLayout>
