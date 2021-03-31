@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/tray_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:drawablePadding="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="@string/info_screen_tray_icon"
+        android:textColor="#B9B9B9"
+        app:drawableLeftCompat="@drawable/sticker_3rdparty_web"
+        app:drawableStartCompat="@drawable/sticker_3rdparty_web" />
+
+    <TextView
+        android:id="@+id/view_webpage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="@string/view_webpage"
+        app:drawableLeftCompat="@drawable/sticker_3rdparty_web"
+        app:drawableStartCompat="@drawable/sticker_3rdparty_web" />
+
+    <TextView
+        android:id="@+id/send_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="@string/send_email"
+        app:drawableLeftCompat="@drawable/sticker_3rdparty_email"
+        app:drawableStartCompat="@drawable/sticker_3rdparty_email" />
+
+    <TextView
+        android:id="@+id/privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="@string/privacy_policy"
+        app:drawableLeftCompat="@drawable/sticker_3rdparty_privacy"
+        app:drawableStartCompat="@drawable/sticker_3rdparty_privacy" />
+</LinearLayout>
